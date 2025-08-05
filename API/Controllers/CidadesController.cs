@@ -3,9 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class CidadesController : ControllerBase
     {
+        [HttpGet("helloworld")]
+        public string Hello()
+        {
+            return "Hello World";
+        }
     }
 }
