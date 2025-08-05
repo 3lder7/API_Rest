@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();// ESSENCIAL para registrar os controllers
 
 var app = builder.Build();
 
@@ -21,5 +22,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.MapControllers();// ESSENCIAL para mapear os endpoints
 app.Run();
