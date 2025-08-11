@@ -1,4 +1,7 @@
 ﻿using API.Models;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace API.Repository
@@ -6,17 +9,18 @@ namespace API.Repository
     public class CidadesRepository
     {
         private static List<Cidade> cidades;
-        private const string EnderecoJson = "";
+        private const string EnderecoJson = "C:\\Users\\elder\\source\\repos\\RestAPI-Estudos\\API\\cidades.json";// Declara uma constante para o endereço do arquivo JSON
 
         public static List<Cidade> Cidades
         {
             get 
             {
+                // Verifica se a lista de cidades ainda não foi inicializada
                 if (cidades == null)
                 {
-                    string jsonString = File.ReadAllText(EnderecoJson);
+                    string jsonString = File.ReadAllText(EnderecoJson);// Ler JSON
 
-                    if (!string.IsNullOrEmpty(jsonString))
+                    if (!string.IsNullOrEmpty(jsonString))// Verifica se não está vazia
                     {
                         cidades = JsonSerializer.Deserialize<List<Cidade>>(jsonString);
                     }
@@ -26,13 +30,45 @@ namespace API.Repository
                     }
                     return cidades;
                 }
-                return cidades;
+                else 
+                {
+                    return cidades;
+                }
             }
         }
 
         private static void CarregarCidades()
         {
-            throw new NotImplementedException();
+            cidades = new List<Cidade>(){
+
+                new Cidade(){
+                Id = 100,
+                Nome = "Santos",
+                IdEstado = 11,
+                IdPais = 55,
+                Populacao = 10000,
+                },
+                new Cidade(){
+                Id = 200,
+                Nome = "São Vicente",
+                IdEstado = 11,
+                IdPais = 55,
+                Populacao = 10000,
+                },
+                new Cidade(){
+                Id = 300,
+                Nome = "Belo Horizonte",
+                IdEstado = 11,
+                IdPais = 31,
+                Populacao = 30000,
+                }
+            };
+        }
+
+        public static void Save() 
+        { 
+            string jsonString = JsonSerializer.Serialize(cidades);
+            File.WriteAllText(EnderecoJson, jsonString, Encoding.UTF8);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.Models;
+using API.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,10 +9,10 @@ namespace API.Controllers
     [ApiController]
     public class CidadesController : ControllerBase
     {
-        [HttpGet("helloworld")]
-        public string Hello()
+        [HttpGet("paises/{idPais}/estados/{idEstado}/cidades")]
+        public List<Cidade> GetCidades()
         {
-            return "Hello World";
+            return CidadesRepository.Cidades;
         }
     }
 }
