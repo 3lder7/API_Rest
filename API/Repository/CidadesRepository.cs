@@ -1,6 +1,4 @@
 ﻿using API.Models;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Text.Json;
 
@@ -40,27 +38,26 @@ namespace API.Repository
         private static void CarregarCidades()
         {
             cidades = new List<Cidade>(){
-
                 new Cidade(){
-                Id = 100,
-                Nome = "Santos",
-                IdEstado = 11,
-                IdPais = 55,
-                Populacao = 10000,
+                    Id = 100,
+                    Nome = "Santos",
+                    IdEstado = 11,
+                    IdPais = 55,
+                    Populacao = 10000,
                 },
                 new Cidade(){
-                Id = 200,
-                Nome = "São Vicente",
-                IdEstado = 11,
-                IdPais = 55,
-                Populacao = 10000,
+                    Id = 200,
+                    Nome = "São Vicente",
+                    IdEstado = 11,
+                    IdPais = 55,
+                    Populacao = 20000,
                 },
                 new Cidade(){
-                Id = 300,
-                Nome = "Belo Horizonte",
-                IdEstado = 11,
-                IdPais = 31,
-                Populacao = 30000,
+                    Id = 300,
+                    Nome = "Belo Horizonte",
+                    IdEstado = 11,
+                    IdPais = 31,
+                    Populacao = 30000,
                 }
             };
         }
