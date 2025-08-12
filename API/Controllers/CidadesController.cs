@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.Controllers
 {
-    [Route("")]
+    [Route("paises/{idPais}/estados/{idEstado}/cidades")]// Define a rota para acessar as cidades
     [ApiController]
     public class CidadesController : ControllerBase
     {
-        [HttpGet("paises/{idPais}/estados/{idEstado}/cidades")]
+        [HttpGet]
         public List<Cidade> GetCidades(// Define o método HTTP GET para obter cidades
             [FromQuery] int fromPopulacao,
             [FromRoute, Required] int idPais,
@@ -30,6 +30,23 @@ namespace API.Controllers
                 resultado = resultado.Where(cidade => cidade.Populacao >= fromPopulacao).ToList();// Filtra as cidades pela população
             }
             return resultado;
+        }
+
+        [HttpPost]
+        public ActionResult PostCidades(
+            [FromRoute, Required] int idPais,
+            [FromRoute, Required] int idEstado,
+            [FromBody] Cidade cidade
+            )
+        {
+            cidade.IdEstado = idEstado;
+            cidade.IdPais = idPais;
+            CidadesRepository.Cidades.Add(cidade);// Adiciona uma nova cidade à lista de cidades
+            CidadesRepository.Save();// Salva as alterações
+
+            string location = $"/paises/{idPais}/estados/{idEstado}/cidades/{cidade.Id}";// Define o local da nova cidade criada
+
+            return Created(location, null);// Retorna o status 201 quando criado
         }
     }
 }
