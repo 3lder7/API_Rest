@@ -55,8 +55,8 @@ namespace API.Repository
                 new Cidade(){
                     Id = 300,
                     Nome = "Belo Horizonte",
-                    IdEstado = 11,
-                    IdPais = 31,
+                    IdEstado = 31,
+                    IdPais = 55,
                     Populacao = 30000,
                 }
             };

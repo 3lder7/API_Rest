@@ -1,6 +1,7 @@
 ﻿using API.Models;
 using API.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Controllers
 {
@@ -9,12 +10,15 @@ namespace API.Controllers
     public class CidadesController : ControllerBase
     {
         [HttpGet("paises/{idPais}/estados/{idEstado}/cidades")]
-        public List<Cidade> GetCidades(
+        public List<Cidade> GetCidades(// Define o método HTTP GET para obter cidades
             [FromQuery] int fromPopulacao,
+            [FromRoute, Required] int idPais,
+            [FromRoute, Required] int idEstado,
             [FromQuery] string? nome = null
             )
         {
-            var resultado = CidadesRepository.Cidades;// Obtém a lista de cidades do repositório
+            var resultado = CidadesRepository.Cidades.Where(
+                cidade => cidade.IdPais == idPais && cidade.IdEstado == idEstado).ToList();// Filtra as cidades pelo país e estado
 
             if (!string.IsNullOrEmpty(nome))
             {
