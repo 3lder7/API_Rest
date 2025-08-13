@@ -10,7 +10,7 @@ namespace API.Controllers
     public class CidadesController : ControllerBase
     {
         [HttpGet]
-        public List<Cidade> GetCidades(// Define o método HTTP GET para obter cidades
+        public ActionResult<List<Cidade>> GetCidades(// Define o método HTTP GET para obter cidades
             [FromQuery] int fromPopulacao,
             [FromRoute, Required] int idPais,
             [FromRoute, Required] int idEstado,
@@ -19,6 +19,11 @@ namespace API.Controllers
         {
             var resultado = CidadesRepository.Cidades.Where(
                 cidade => cidade.IdPais == idPais && cidade.IdEstado == idEstado).ToList();// Filtra as cidades pelo país e estado
+
+            if (resultado.Count == 0)
+            {
+                return NotFound("Nenhuma cidade encontrada com os critérios especificados.");// Retorna 404 se não encontrar cidades
+            }
 
             if (!string.IsNullOrEmpty(nome))
             {
@@ -29,7 +34,7 @@ namespace API.Controllers
             {
                 resultado = resultado.Where(cidade => cidade.Populacao >= fromPopulacao).ToList();// Filtra as cidades pela população
             }
-            return resultado;
+            return Ok(resultado);
         }
 
         [HttpPost]
@@ -41,8 +46,8 @@ namespace API.Controllers
         {
             cidade.IdEstado = idEstado;
             cidade.IdPais = idPais;
-            CidadesRepository.Cidades.Add(cidade);// Adiciona uma nova cidade à lista de cidades
-            CidadesRepository.Save();// Salva as alterações
+            CidadesRepository.Cidades.Add(cidade);
+            CidadesRepository.Save();
 
             string location = $"/paises/{idPais}/estados/{idEstado}/cidades/{cidade.Id}";// Define o local da nova cidade criada
 
