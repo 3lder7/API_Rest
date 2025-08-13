@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cidades</h1>
+
+    @ViewBag.Mensagem<br/>
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+
+        Id: <input id="txtIdCidade" name="IdCidade" />
+        Nome: <input id="txtNome" name="Nome" />
+        População: <input id="txtPopulacao" name="Populacao" />
+        <br/>
+
+        Estado: <select id="selEstado" name="Estado">
+            <option>11</option>
+            <option>31</option>
+        </select><br/>
+
+        Pais: <select id="selPais" name="Pais">
+            <option>55</option>
+        </select>
+
+        <input type="submit" name="Submit" id="btnSubmit" value="Gravar" />
+    </form>
+</div>
