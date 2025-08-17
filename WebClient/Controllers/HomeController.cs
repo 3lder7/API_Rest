@@ -3,6 +3,10 @@ using Models;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+<<<<<<< HEAD
+=======
+using System.Threading.Tasks;
+>>>>>>> f0d3f3a291eca739af500dd5c027425e46412a4d
 using WebClient.Models;
 
 namespace WebClient.Controllers
@@ -16,6 +20,7 @@ namespace WebClient.Controllers
             _logger = logger;
         }
 
+<<<<<<< HEAD
         public async Task<IActionResult> Index()
         {
             List<Cidade> Cidades = new List<Cidade>();
@@ -53,6 +58,11 @@ namespace WebClient.Controllers
                 }
             }
             return View(Cidades);
+=======
+        public IActionResult Index()
+        {
+            return View();
+>>>>>>> f0d3f3a291eca739af500dd5c027425e46412a4d
         }
 
         [HttpPost]
@@ -93,7 +103,11 @@ namespace WebClient.Controllers
               
                 }
             }
+<<<<<<< HEAD
                 return await Index();
+=======
+                return View();
+>>>>>>> f0d3f3a291eca739af500dd5c027425e46412a4d
         }
         public IActionResult Privacy()
         {

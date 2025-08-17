@@ -6,9 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Content Remove="Models\Index.cshtml" />
     <Content Remove="Views\Home\_ViewStart.cshtml" />
   </ItemGroup>
 
+=======
+>>>>>>> f0d3f3a291eca739af500dd5c027425e46412a4d
 </Project>
