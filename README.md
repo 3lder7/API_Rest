@@ -19,7 +19,7 @@ A API oferece os seguintes endpoints para interagir com os dados das cidades:
 
 1. Obter Cidades
 
-```http
+```https
  Endpoint: GET /paises/{idPais}/estados/{idEstado}/cidades
 ```
 
@@ -35,7 +35,7 @@ Descrição: Retorna uma lista de cidades filtradas por país e estado. Opcional
 - 200 OK: Retorna uma lista de objetos Cidade.
 - 404 Not Found: Se nenhuma cidade for encontrada com os critérios especificados.
 2. Adicionar Cidade
-```http
+```https
 Endpoint: POST /paises/{idPais}/estados/{idEstado}/cidades
 ```
 Descrição: Adiciona uma nova cidade ao repositório.
