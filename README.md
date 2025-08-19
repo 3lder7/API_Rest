@@ -1,7 +1,7 @@
 
 # 🏙️ Rest API - Cidades
 
-Este projeto é uma API RESTful simples para gerenciar informações sobre cidades, incluindo seu nome, estado, país e população. Os dados das cidades são armazenados em um arquivo JSON.
+Este projeto é uma API REST simples para gerenciar informações sobre cidades, incluindo seu nome, estado, país e população. Os dados das cidades são armazenados em um arquivo JSON.
 
 ## 📁 Estrutura do Projeto
 
